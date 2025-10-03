@@ -9,7 +9,6 @@
             customColor="bg-blue-950 text-white hover:bg-gray-500 cursor-pointer focus:ring-blue-800">
             View All
         </app-button>
-
     </div>
 
     <!-- Table -->
@@ -29,9 +28,9 @@
             </thead>
 
             <tbody class="bg-white divide-y divide-gray-200">
-                <!-- <tr *ngFor="let row of rows" class="hover:bg-gray-50" [class.cursor-pointer]="rowClickable"> -->
                 <tr *ngFor="let row of pagedRows" class="hover:bg-gray-50" [class.cursor-pointer]="rowClickable">
                     <td *ngFor="let col of columns" class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        
                         <!-- Avatar -->
                         <ng-container *ngIf="col.type === 'avatar'">
                             <div class="flex items-center">
@@ -58,9 +57,22 @@
                             </span>
                         </ng-container>
 
+                        <!-- Date -->
+                        <ng-container *ngIf="col.type === 'date'">
+                            {{ row[col.key] | date:'yyyy-MM-dd' }}
+                        </ng-container>
+
                         <!-- Default text -->
                         <ng-container *ngIf="!col.type || col.type === 'text'">
                             {{ row[col.key] || '' }}
+                        </ng-container>
+
+                        <!-- Action column inside rows -->
+                        <ng-container *ngIf="col.type === 'action'">
+                            <app-button size="sm" customColor="bg-blue-950 hover:bg-blue-800 text-white"
+                                (buttonClick)="onActionClick(row)">
+                                View
+                            </app-button>
                         </ng-container>
                     </td>
 
@@ -84,7 +96,11 @@
 
     <!-- Pagination Footer -->
     <div class="p-4 border-t border-gray-200 flex justify-end">
-        <app-pagination *ngIf="totalItems > pageSize" [currentPage]="currentPage" [pageSize]="pageSize"
-            [totalItems]="totalItems" (pageChange)="pageChange.emit($event)"></app-pagination>
+        <app-pagination *ngIf="totalItems > pageSize"
+            [currentPage]="currentPage"
+            [pageSize]="pageSize"
+            [totalItems]="totalItems"
+            (pageChange)="pageChange.emit($event)">
+        </app-pagination>
     </div>
 </div>

@@ -10,6 +10,7 @@ import { StudentSignupComponent } from './features/auth/pages/signups/student-si
 import { TeachersComponent } from './features/admin/pages/teachers/teachers.component';
 import { StudentsComponent } from './features/admin/pages/students/students.component';
 import { GenerateAssignmentsComponent } from './features/teacher/pages/generate-assignments/generate-assignments.component';
+import { TeacherDashboardComponent } from './features/teacher/pages/teacher-dashboard/teacher-dashboard.component';
 
 
 export const routes: Routes = [
@@ -21,7 +22,8 @@ export const routes: Routes = [
     { path: 'students', component: StudentsComponent },
     { path: 'settings', component: SettingsComponent },
     { path: 'adminsignup', component: AdminSignupComponent },
-      { path: 'studentsignup', component: StudentSignupComponent },
-      { path: 'assignments', component: GenerateAssignmentsComponent },
+    { path: 'studentsignup', component: StudentSignupComponent },
+    { path: 'assignments', component: GenerateAssignmentsComponent },
+    { path: 'teacherdashboard', component: TeacherDashboardComponent },
     { path: '**', component: NotFoundComponent },
 ];

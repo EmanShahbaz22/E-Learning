@@ -61,6 +61,11 @@ export class DataTableComponent {
       this.router.navigate([this.viewAllRoute]);
     }
   }
+  @Output() actionClick = new EventEmitter<any>();
+
+onActionClick(row: any) {
+  this.actionClick.emit(row);
+}
 
   onEdit(row: any) {
     this.edit.emit(row);
@@ -74,7 +79,7 @@ export class DataTableComponent {
 export interface TableColumn {
   key: string;                        // property name in row object
   label: string;                      // column header label
-  type?: 'text' | 'badge' | 'avatar'; // special rendering
+  type?: 'text' | 'badge' | 'avatar'|'date' | 'action'; // special rendering
   badgeColors?: {                     // used only when type = 'badge'
     [key: string]: string
   };
