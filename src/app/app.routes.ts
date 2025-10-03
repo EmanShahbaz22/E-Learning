@@ -9,6 +9,8 @@ import { LandingPageComponent } from './features/landing-page/landing-page.compo
 import { StudentSignupComponent } from './features/auth/pages/signups/student-signup/student-signup.component';
 import { TeachersComponent } from './features/admin/pages/teachers/teachers.component';
 import { StudentsComponent } from './features/admin/pages/students/students.component';
+import { GenerateAssignmentsComponent } from './features/teacher/pages/generate-assignments/generate-assignments.component';
+
 
 export const routes: Routes = [
     { path: '', component: LandingPageComponent },
@@ -20,5 +22,6 @@ export const routes: Routes = [
     { path: 'settings', component: SettingsComponent },
     { path: 'adminsignup', component: AdminSignupComponent },
       { path: 'studentsignup', component: StudentSignupComponent },
+      { path: 'assignments', component: GenerateAssignmentsComponent },
     { path: '**', component: NotFoundComponent },
 ];
